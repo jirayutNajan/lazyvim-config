@@ -1,1 +1,14 @@
-kuy kuy
+Neovim Lazyvim
+กด H ดู hidden files
+กด I ดู files ทุกแบบ
+เพ่ิม blank tab กรณีอยากเปิดไฟล์ใหม่ที่ terminal <leader>fn
+
+สลับ tree กับ editor ใช้ ctrl+h/l
+สลับระหว่าง tab ใช้ shift+h/l
+
+เปิด terminal ใช้แค่ :terminal
+
+ดูข้อมูล function ใช้ shift+i
+
+เปลี่ยน tab ใน editor ใช้ ctrl
+เปลี่ยน tab neotree ใช้ shift
