@@ -27,3 +27,6 @@ vim.keymap.set("n", "<leader>W", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- เปลี่ยน Tab (Buffer) ไปทางซ้าย (ย้อนกลับ)
 vim.keymap.set("n", "<leader>B", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+
+-- กด Esc เพื่อออกจาก Terminal Mode กลับสู่ Normal Mode
+vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
