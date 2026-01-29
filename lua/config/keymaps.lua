@@ -22,11 +22,5 @@ vim.keymap.set("n", "K", "5k", { noremap = true, silent = true })
 -- ปกติ LazyVim ใช้ vim.lsp.buf.hover()
 vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "LSP Information (Hover)" })
 
--- เปลี่ยน Tab (Buffer) ไปทางขวา (ถัดไป)
-vim.keymap.set("n", "<leader>W", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-
--- เปลี่ยน Tab (Buffer) ไปทางซ้าย (ย้อนกลับ)
-vim.keymap.set("n", "<leader>B", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-
 -- กด Esc เพื่อออกจาก Terminal Mode กลับสู่ Normal Mode
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
