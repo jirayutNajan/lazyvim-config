@@ -1,22 +1,15 @@
+-- ทำให้ tokyonight transparent
 return {
-  -- 1. ติดตั้ง Plugin ของ Theme
   {
-    "EdenEast/nightfox.nvim",
-    lazy = false, -- โหลดทันทีที่เปิด
-    priority = 1000, -- ให้ความสำคัญสูงกว่า Plugin อื่น
-    config = function()
-      -- สั่งให้ใช้สี carbonfox (เทาดำ)
-      vim.cmd("colorscheme carbonfox")
-    end,
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    -- opts = {
+    --   transparent = true, -- เปิดความโปร่งใสที่นี่
+    --   styles = {
+    --     sidebars = "transparent", -- ทำให้แถบข้าง (Explorer) ใส
+    --     floats = "transparent",   -- ทำให้หน้าต่างลอย (Floating windows) ใส
+    --   },
+    -- },
   },
-
-  -- 2. (ทางเลือก) ถ้าใช้ Catppuccin Mocha ให้ใช้โค้ดชุดนี้แทน
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme("catppuccin-mocha")
-  --   end,
-  -- },
 }
