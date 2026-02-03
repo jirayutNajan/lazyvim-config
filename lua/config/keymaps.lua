@@ -24,3 +24,6 @@ vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "LSP Information (Hover)" }
 
 -- กด Esc เพื่อออกจาก Terminal Mode กลับสู่ Normal Mode
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
+
+-- ใช้ Enter แทนปุ่ม * (ค้นหาคำใต้ Cursor)
+vim.keymap.set("n", "<CR>", "*", { desc = "Search word under cursor" })
