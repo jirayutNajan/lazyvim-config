@@ -27,3 +27,7 @@ vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
 
 -- ใช้ Enter แทนปุ่ม * (ค้นหาคำใต้ Cursor)
 vim.keymap.set("n", "<CR>", "*", { desc = "Search word under cursor" })
+
+-- ตัวอย่าง: ใช้ leader + { หรือ } เพื่อปรับขนาด window ทางแนวตั้งทีละเยอะๆ
+vim.keymap.set("n", "<leader>{", "<cmd>vertical resize -25<cr>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<leader>}", "<cmd>vertical resize +25<cr>", { desc = "Increase window width" })
