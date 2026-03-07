@@ -1,14 +1,30 @@
 return {
   "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
   opts = {
-    -- ตั้งค่า FPS รวมสำหรับทุกแอนิเมชันของ snacks (เช่น Dashboard, Notifier)
+    -- 1. ตั้งค่า Global Animation (สำหรับ Dashboard, Layouts, ฯลฯ)
     animate = {
-      fps = 120, -- ปรับค่าตามต้องการ (ค่าเริ่มต้นปกติคือ 120)
+      fps = 120,
     },
-    -- ถ้าต้องการเน้นปรับความลื่นไหลของการ Scroll
+    -- 2. ตั้งค่าการ Scroll หน้าจอ (Smooth Scroll)
     scroll = {
+      enabled = true, -- มั่นใจว่าเปิดใช้งานไว้
       animate = {
-        fps = 120, -- ปรับ FPS เฉพาะตอนเลื่อนหน้าจอ
+        fps = 120,
+      },
+    },
+    -- 3. ตั้งค่าการแจ้งเตือน (Notifications)
+    notifier = {
+      enabled = true,
+      animate = {
+        fps = 120,
+      },
+    },
+    -- 4. ตั้งค่าหน้า Dashboard (เผื่อมีแอนิเมชันตอนเปิด)
+    dashboard = {
+      animate = {
+        fps = 120,
       },
     },
   },
