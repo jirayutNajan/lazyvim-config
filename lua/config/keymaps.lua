@@ -31,3 +31,18 @@ vim.keymap.set("n", "<CR>", "*", { desc = "Search word under cursor" })
 -- ตัวอย่าง: ใช้ leader + { หรือ } เพื่อปรับขนาด window ทางแนวตั้งทีละเยอะๆ
 vim.keymap.set("n", "<leader>{", "<cmd>vertical resize -25<cr>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<leader>}", "<cmd>vertical resize +25<cr>", { desc = "Increase window width" })
+
+-- Toggle Autocomplete สำหรับ blink.cmp โดยใช้ <leader>ux
+vim.keymap.set("n", "<leader>ux", function()
+  if vim.g.blink_enabled == nil then
+    vim.g.blink_enabled = true
+  end
+  vim.g.blink_enabled = not vim.g.blink_enabled
+  
+  -- แสดงข้อความแจ้งเตือนสั้นๆ
+  if vim.g.blink_enabled then
+    vim.notify("Autocomplete: Enabled", vim.log.levels.INFO)
+  else
+    vim.notify("Autocomplete: Disabled", vim.log.levels.WARN)
+  end
+end, { desc = "Toggle Autocomplete (Blink)" })
