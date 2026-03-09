@@ -9,7 +9,7 @@ return {
     },
     -- 2. ตั้งค่าการ Scroll หน้าจอ (Smooth Scroll)
     scroll = {
-      enabled = true, -- มั่นใจว่าเปิดใช้งานไว้
+      enabled = true, -- มั่นใจว่าหน้าจอเปิด
       animate = {
         fps = 120,
       },
@@ -21,10 +21,29 @@ return {
         fps = 120,
       },
     },
-    -- 4. ตั้งค่าหน้า Dashboard (เผื่อมีแอนิเมชันตอนเปิด)
     dashboard = {
-      animate = {
-        fps = 120,
+      preset = {
+        pick = nil,
+        ---@type snacks.dashboard.Item[]
+        keys = {
+          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+        },
+        header = [[
+    ___  ________  ________        ___  ________  ________     
+   |\  \|\   __  \|\   __  \      |\  \|\   __  \|\   __  \    
+   \ \  \ \  \|\  \ \  \|\ /_     \ \  \ \  \|\  \ \  \|\ /_   
+ __ \ \  \ \  \\\  \ \   __  \  __ \ \  \ \   __  \ \   __  \  
+|\  \\_\  \ \  \\\  \ \  \|\  \|\  \\_\  \ \  \ \  \ \  \|\  \ 
+\ \________\ \_______\ \_______\ \________\ \__\ \__\ \_______\
+ \|________|\|_______|\|_______|\|________|\|__|\|__|\|_______|
+      ]],
       },
     },
   },
