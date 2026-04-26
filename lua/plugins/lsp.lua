@@ -4,6 +4,16 @@ return {
     opts = {
       inlay_hints = { enabled = false },
       servers = {
+        gopls = {
+          settings = {
+            gopls = {
+              analyses = {
+                ST1020 = false,
+                ST1021 = false,
+              }
+            }
+          }
+        },
         ["*"] = {
           -- ภายใต้ keys จะเป็นการจัดการคีย์ลัดของ LSP โดยเฉพาะ
           keys = {
