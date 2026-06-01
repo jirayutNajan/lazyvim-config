@@ -22,4 +22,18 @@ if vim.g.neovide then
     vim.keymap.set("n", "<D-->", function() change_scale_factor(1/1.1) end)
     -- Cmd + 0 เพื่อรีเซ็ตเป็น 1.0
     vim.keymap.set("n", "<D-0>", function() vim.g.neovide_scale_factor = 1.0 end)
+
+    -- ตั้งให้กด Cmd+c เพื่อ Copy (ในโหมด Normal และ Visual)
+    vim.keymap.set({'n', 'v'}, '<D-c>', '"+y', { noremap = true, silent = true })
+    
+    -- ตั้งให้กด Cmd+v เพื่อ Paste (ในโหมด Normal และ Visual)
+    vim.keymap.set({'n', 'v'}, '<D-v>', '"+p', { noremap = true, silent = true })
+    
+    -- ตั้งให้กด Cmd+v เพื่อ Paste ในโหมด Insert (ตอนกำลังพิมพ์)
+    vim.keymap.set('i', '<D-v>', '<C-r>+', { noremap = true, silent = true })
+    
+    -- ตั้งให้กด Cmd+v เพื่อ Paste ในโหมด Command (ตอนกด : เพื่อพิมพ์คำสั่ง)
+    vim.keymap.set('c', '<D-v>', '<C-r>+', { noremap = true, silent = true })
+    -- ตั้งให้กด Cmd+v เพื่อ Paste ในโหมด Command (ตอนกด : เพื่อพิมพ์คำสั่ง)
+    vim.keymap.set('c', '<D-v>', '<C-R>+', { noremap = true })
 end
