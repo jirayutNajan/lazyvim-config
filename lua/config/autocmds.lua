@@ -19,16 +19,16 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- สร้างคำสั่ง :Cd (ตัว C ใหญ่) ที่รองรับการใส่ Quotes ครอบ Path
-vim.api.nvim_create_user_command("Cd", function(opts)
-  -- ลบเครื่องหมาย ' หรือ " ออกจากหัวและท้ายของ string
-  local path = opts.args:gsub("^['\"]", ""):gsub("['\"]$", "")
-
-  -- สั่งเปลี่ยน Directory
-  local success, err = pcall(vim.fn.chdir, path)
-  if success then
-    print("Directory changed to: " .. vim.fn.getcwd())
-  else
-    print("Error: Could not change directory to " .. path)
-  end
-end, { nargs = 1, complete = "dir" })
+-- -- สร้างคำสั่ง :Cd (ตัว C ใหญ่) ที่รองรับการใส่ Quotes ครอบ Path
+-- vim.api.nvim_create_user_command("Cd", function(opts)
+--   -- ลบเครื่องหมาย ' หรือ " ออกจากหัวและท้ายของ string
+--   local path = opts.args:gsub("^['\"]", ""):gsub("['\"]$", "")
+--
+--   -- สั่งเปลี่ยน Directory
+--   local success, err = pcall(vim.fn.chdir, path)
+--   if success then
+--     print("Directory changed to: " .. vim.fn.getcwd())
+--   else
+--     print("Error: Could not change directory to " .. path)
+--   end
+-- end, { nargs = 1, complete = "dir" })
