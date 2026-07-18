@@ -2,7 +2,35 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- Keymap
+-- ลบ keymap <leader>gd ตัวเดิมของ LazyVim ออกก่อน เพื่อป้องกันการชนกัน
+vim.keymap.del("n", "<leader>gd")
+
+-- สร้าง keymap ใหม่โดยใช้ Gitsigns change_base (แก้ไข Syntax ถูกต้อง 100%)
+vim.keymap.set("n", "<leader>gd", function()
+  -- เด้งกล่องข้อความถามหา Commit Hash (กด Enter ผ่านเพื่อใช้ Commit ล่าสุด)
+  vim.ui.input({ prompt = "Enter Commit Hash / Ref (Default: HEAD~1): " }, function(input)
+    if input == nil then return end
+    
+    -- ถ้าไม่ได้พิมพ์อะไรเลย ให้ตั้งเป็น HEAD~1
+    local ref = input == "" and "HEAD~1" or input
+    
+    -- รันคำสั่ง Gitsigns change_base ตามด้วย ref
+    local success, err = pcall(function()
+      require("gitsigns").change_base(ref, true)
+    end)
+    
+    if success then
+      vim.notify("Gitsigns base changed to: " .. ref, vim.log.levels.INFO)
+    else
+      vim.notify("Failed to change Gitsigns base: " .. tostring(err), vim.log.levels.ERROR)
+    end
+  end)
+end, { desc = "Git Diff with Commit (Gitsigns)" })
+
+-- ==========================================
+-- Your Personal Keymaps
+-- ==========================================
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -18,8 +46,7 @@ vim.keymap.set({ "n", "v", "o" }, "B", "_", { noremap = true })
 vim.keymap.set("n", "J", "5j", { noremap = true, silent = true })
 vim.keymap.set("n", "K", "5k", { noremap = true, silent = true })
 
--- 3. ย้ายฟังก์ชัน Information/Hover ไปไว้ที่ I (Shift + i)
--- ปกติ LazyVim ใช้ vim.lsp.buf.hover()
+-- ย้ายฟังก์ชัน Information/Hover ไปไว้ที่ I (Shift + i)
 vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "LSP Information (Hover)" })
 
 -- กด Esc เพื่อออกจาก Terminal Mode กลับสู่ Normal Mode
@@ -28,7 +55,7 @@ vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
 -- ใช้ Enter แทนปุ่ม * (ค้นหาคำใต้ Cursor)
 vim.keymap.set("n", "<CR>", "*", { desc = "Search word under cursor" })
 
--- ตัวอย่าง: ใช้ leader + { หรือ } เพื่อปรับขนาด window ทางแนวตั้งทีละเยอะๆ
+-- ปรับขนาด window ทางแนวตั้งทีละเยอะๆ
 vim.keymap.set("n", "<leader>{", "<cmd>vertical resize -25<cr>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<leader>}", "<cmd>vertical resize +25<cr>", { desc = "Increase window width" })
 
@@ -39,7 +66,6 @@ vim.keymap.set("n", "<leader>ux", function()
   end
   vim.g.blink_enabled = not vim.g.blink_enabled
   
-  -- แสดงข้อความแจ้งเตือนสั้นๆ
   if vim.g.blink_enabled then
     vim.notify("Autocomplete: Enabled", vim.log.levels.INFO)
   else
