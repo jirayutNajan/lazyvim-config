@@ -4,3 +4,4 @@
 
 vim.g.autoformat = false
 vim.opt.spell = false
+vim.opt.mousescroll = "ver:1,hor:1"
