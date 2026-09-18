@@ -47,13 +47,3 @@ vim.keymap.set("n", "<leader>ux", function()
     vim.notify("Autocomplete: Disabled", vim.log.levels.WARN)
   end
 end, { desc = "Toggle Autocomplete (Blink)" })
-
--- Toggle DiffviewOpen and DiffviewClose with <leader>gd
-vim.keymap.set("n", "<leader>gd", function()
-  local view = require("diffview.lib").get_current_view()
-  if view then
-    vim.cmd("DiffviewClose")
-  else
-    vim.cmd("DiffviewOpen")
-  end
-end, { desc = "Toggle Git Diffview" })

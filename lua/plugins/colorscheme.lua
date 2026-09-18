@@ -23,14 +23,20 @@ return {
   },
   {
     "olimorris/onedarkpro.nvim",
-    priority = 1000, -- สำคัญมาก: ต้องโหลดก่อนปลั๊กอินตัวอื่น
+    -- priority = 1000, -- สำคัญมาก: ต้องโหลดก่อนปลั๊กอินตัวอื่น
   },
-
-  -- ถ้าต้องการให้มันเป็น Theme เริ่มต้นทันทีที่เปิดเครื่อง ให้แก้ตรงนี้ด้วย
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "catppuccin",
     },
   },
+  --
+  -- -- ถ้าต้องการให้มันเป็น Theme เริ่มต้นทันทีที่เปิดเครื่อง ให้แก้ตรงนี้ด้วย
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "onedark",
+  --   },
+  -- },
 }
