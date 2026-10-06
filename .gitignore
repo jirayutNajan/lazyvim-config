@@ -8,3 +8,5 @@ foo.*
 data
 
 note.txt
+
+.DS_store
